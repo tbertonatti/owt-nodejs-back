@@ -1,0 +1,24 @@
+{
+  "name": "owt-nodejs-back",
+  "version": "1.0.0",
+  "description": "Open Weather Test NodeJS Backend",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon bin/www",
+    "test": "mocha"
+  },
+  "author": "tbertonatti",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "devDependencies": {
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "ipapi.co": "^0.3.0",
+    "mocha": "^7.1.2",
+    "request": "^2.88.2",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
+  }
+}
