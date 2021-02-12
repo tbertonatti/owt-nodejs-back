@@ -1,0 +1,250 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Open Weather Test",
+    "description": "Open Weather Test API"
+  },
+  "host": "localhost:8000",
+  "basePath": "/v1/",
+  "tags": [
+    {
+      "name": "Current",
+      "description": "API for current weather"
+    },
+    {
+      "name": "Forecast",
+      "description": "API for forecast"
+    },
+    {
+      "name": "Location",
+      "description": "API for current location"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/current": {
+      "get": {
+        "tags": ["Current"],
+        "summary": "Get weather for current city",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Current"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/current/{city}": {
+      "parameters": [
+        {
+          "name": "city",
+          "in": "path",
+          "required": true,
+          "description": "City of weather that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Current"],
+        "summary": "Get weather for a city",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Current"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/forecast": {
+      "get": {
+        "tags": ["Forecast"],
+        "summary": "Get weather forecast for current city",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Forecast"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/forecast/{city}": {
+      "parameters": [
+        {
+          "name": "city",
+          "in": "path",
+          "required": true,
+          "description": "City of forecast that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Forecast"],
+        "summary": "Get weather forecast for a city",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Forecast"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/location": {
+      "get": {
+        "tags": ["Location"],
+        "summary": "Get current location",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          },
+          "500": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Current": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "main": {
+              "type": "object",
+              "properties": {
+                "temp": {
+                  "type": "string"
+                }
+              }
+            },
+            "weather": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "main": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Forecast": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "list": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "main": {
+                    "type": "object",
+                    "properties": {
+                      "temp": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "dt_txt": {
+                    "type": "string"
+                  },
+                  "weather": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "main": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Location": {
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "ip": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "region": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Error": {
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
