@@ -8,15 +8,29 @@
 
 ## Setup
 
-Clone the repo, set environment variables and install the dependencies.
+### Set environment variables:
+
+If using Windows with powershell:
+
+```bash
+$env:OWKEYID="<yourOpenWeatherApiKey>"
+```
+If using Windows with cmd:
+
+```bash
+set OWKEYID=<yourOpenWeatherApiKey>
+```
+If using Linux:
 
 ```bash
 export OWKEYID=<yourOpenWeatherApiKey>
-git clone https://github.com/tbertonatti/owt-nodejs-back.git
-cd owt-nodejs-back
 ```
 
+### Clone the repo and install the dependencies:
+
 ```bash
+git clone https://github.com/tbertonatti/owt-nodejs-back.git
+cd owt-nodejs-back
 npm install
 ```
 
